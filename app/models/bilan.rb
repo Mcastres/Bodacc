@@ -1,0 +1,2 @@
+class Bilan < ApplicationRecord
+end

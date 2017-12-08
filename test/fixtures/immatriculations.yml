@@ -1,0 +1,83 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nojo: MyString
+  type_annonce: MyString
+  numero_annonce: MyString
+  numero_departement: MyString
+  tribunal: MyString
+  siren: MyString
+  code_rcs: MyString
+  nom_greffe_immat: MyString
+  denomination: MyString
+  administration: MyString
+  montant_capital: MyString
+  devise: MyString
+  forme_juridique: MyString
+  numero_voie: MyString
+  type_voie: MyString
+  nom_voie: MyString
+  code_postal: MyString
+  ville: MyString
+  origine_fonds: MyString
+  qualite_etablissement: MyString
+  activite: MyString
+  date_immatriculation: 2017-12-07 12:41:20
+  date_commencement_activite: 2017-12-07 12:41:20
+  descriptif: MyString
+  date_effet: 2017-12-07 12:41:20
+  journal: MyString
+  opposition: MyString
+  declaration_creance: MyString
+  categorie: MyString
+  immatriculation: MyString
+  nom_publication_ap: MyString
+  numero_parution_ap: MyString
+  date_parution_ap: 2017-12-07 12:41:20
+  numero_annonce_ap: MyString
+  file: MyString
+  type_bodacc: MyString
+  annee_parution: MyString
+  updated_at: 2017-12-07 12:41:20
+  created_at: 2017-12-07 12:41:20
+
+two:
+  nojo: MyString
+  type_annonce: MyString
+  numero_annonce: MyString
+  numero_departement: MyString
+  tribunal: MyString
+  siren: MyString
+  code_rcs: MyString
+  nom_greffe_immat: MyString
+  denomination: MyString
+  administration: MyString
+  montant_capital: MyString
+  devise: MyString
+  forme_juridique: MyString
+  numero_voie: MyString
+  type_voie: MyString
+  nom_voie: MyString
+  code_postal: MyString
+  ville: MyString
+  origine_fonds: MyString
+  qualite_etablissement: MyString
+  activite: MyString
+  date_immatriculation: 2017-12-07 12:41:20
+  date_commencement_activite: 2017-12-07 12:41:20
+  descriptif: MyString
+  date_effet: 2017-12-07 12:41:20
+  journal: MyString
+  opposition: MyString
+  declaration_creance: MyString
+  categorie: MyString
+  immatriculation: MyString
+  nom_publication_ap: MyString
+  numero_parution_ap: MyString
+  date_parution_ap: 2017-12-07 12:41:20
+  numero_annonce_ap: MyString
+  file: MyString
+  type_bodacc: MyString
+  annee_parution: MyString
+  updated_at: 2017-12-07 12:41:20
+  created_at: 2017-12-07 12:41:20

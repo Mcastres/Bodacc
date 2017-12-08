@@ -1,0 +1,2 @@
+class Pcl < ApplicationRecord
+end

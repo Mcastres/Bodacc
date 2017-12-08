@@ -1,0 +1,67 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nojo: MyString
+  type_annonce: MyString
+  numero_annonce: MyString
+  numero_departement: MyString
+  tribunal: MyString
+  siren: MyString
+  code_rcs: MyString
+  nom_greffe_immat: MyString
+  denomination: MyString
+  sigle: MyString
+  forme_juridique: MyString
+  adresse: MyString
+  numero_voie: MyString
+  type_voie: MyString
+  nom_voie: MyString
+  compl_geographique: MyString
+  code_postal: MyString
+  ville: MyString
+  date_cloture: MyString
+  type_depot: MyString
+  descriptif: MyString
+  parution_avis_precedent: 2017-12-07 10:14:38
+  nom_publication: MyString
+  numero_parution: MyString
+  date_publication: 2017-12-07 10:14:38
+  numero_annonce: MyString
+  file: MyString
+  type_bodacc: MyString
+  annee_parution: MyString
+  updated_at: 2017-12-07 10:14:38
+  created_at: 2017-12-07 10:14:38
+
+two:
+  nojo: MyString
+  type_annonce: MyString
+  numero_annonce: MyString
+  numero_departement: MyString
+  tribunal: MyString
+  siren: MyString
+  code_rcs: MyString
+  nom_greffe_immat: MyString
+  denomination: MyString
+  sigle: MyString
+  forme_juridique: MyString
+  adresse: MyString
+  numero_voie: MyString
+  type_voie: MyString
+  nom_voie: MyString
+  compl_geographique: MyString
+  code_postal: MyString
+  ville: MyString
+  date_cloture: MyString
+  type_depot: MyString
+  descriptif: MyString
+  parution_avis_precedent: 2017-12-07 10:14:38
+  nom_publication: MyString
+  numero_parution: MyString
+  date_publication: 2017-12-07 10:14:38
+  numero_annonce: MyString
+  file: MyString
+  type_bodacc: MyString
+  annee_parution: MyString
+  updated_at: 2017-12-07 10:14:38
+  created_at: 2017-12-07 10:14:38

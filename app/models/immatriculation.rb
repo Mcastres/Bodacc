@@ -1,0 +1,2 @@
+class Immatriculation < ApplicationRecord
+end
