@@ -39,8 +39,6 @@ class ScraperController < ApplicationController
     # BILAN (BODACC C)
     # i = 0
     # Dir.glob('tmp/xml/BILAN/*') do |file|
-    #   # system('tar -xvf '+file+ ' -C tmp/xml/BILAN/')
-    #
     #   xml = Nokogiri::XML(open(file))
     #   xml.xpath('//avis').each do |avis|
     #     Bilan.create( \
@@ -70,13 +68,14 @@ class ScraperController < ApplicationController
     #       numero_annonce_ap: avis.search('parutionAvisPrecedent/numeroAnnonce').text,
     #       file: file.split('/').last,
     #       type_bodacc: "BODACC-C",
-    #       annee_parution: Time.now.year - 9
+    #       annee_parution: file[23..26]
     #     )
     #     i = i + 1
     #   end
     #   system("rm "+file)
     #   next if file == '.' or file == '..'
-    #   puts i.to_s + " new bilan"
+    #   puts i.to_s + " extracted from " + file.to_s
+    #   puts file[23..26]
     # end
     # system('rm tmp/xml/BILAN/*.taz*')
 
@@ -114,7 +113,7 @@ class ScraperController < ApplicationController
     #       numero_annonce_ap: annonce.search('parutionAvisPrecedent/numeroAnnonce').text,
     #       file: file.split('/').last,
     #       type_bodacc: "BODACC-A",
-    #       annee_parution: Time.now.year - 9
+    #       annee_parution: file[19..22]
     #     )
     #     i = i + 1
     #   end
@@ -124,139 +123,139 @@ class ScraperController < ApplicationController
     # end
 
     # RCS-B Modifications (BODACC B)
-    i = 0
-    Dir.glob('tmp/xml/RCS-B/*') do |file|
-      xml = Nokogiri::XML(open(file))
-      xml.xpath('//avis').each do |annonce|
-        if !annonce.search('modificationsGenerales').blank?
-          Modification.create( \
-            nojo: annonce.search('nojo').text,
-            type_annonce: annonce.search('typeAnnonce').children,
-            numero_annonce: annonce.search('numeroAnnonce').text,
-            numero_departement: annonce.search('numeroDepartement').text,
-            tribunal: annonce.search('tribunal').text,
-            siren: annonce.search('numeroIdentificationRCS').text,
-            code_rcs: annonce.search('codeRCS').text,
-            nom_greffe_immat: annonce.search('nomGreffeImmat').text,
-            denomination: annonce.search('denomination').text,
-            sigle: annonce.search('sigle').text,
-            forme_juridique: annonce.search('formeJuridique').text,
-            date_commencement_activite: annonce.search('dateCommencementActivite').text,
-            date_effet: annonce.search('dateEffet').text,
-            descriptif: annonce.search('descriptif').text,
-            denomination_pepm: annonce.search('modificationsGenerales/precedentExploitantPM/denomination').text,
-            siren_pepm: annonce.search('modificationsGenerales/precedentExploitantPM/numeroImmatriculation/numeroIdentification').text,
-            nature_pepp: annonce.search('modificationsGenerales/precedentExploitantPP/nature').text,
-            nom_pepp: annonce.search('modificationsGenerales/precedentExploitantPP/nom').text,
-            prenom_pepp: annonce.search('modificationsGenerales/precedentExploitantPP/prenom').text,
-            nom_usage_pepp: annonce.search('modificationsGenerales/precedentExploitantPP/nomUsage').text,
-            siren_pepp: annonce.search('modificationsGenerales/precedentExploitantPP/numeroImmatriculation/numeroIdentification').text,
-            nom_publication_ap: annonce.search('nomPublication').text,
-            numero_parution_ap: annonce.search('numeroPublication').text,
-            date_parution_ap: annonce.search('dateParution').text,
-            numero_annonce_ap: annonce.search('parutionAvisPrecedent/numeroAnnonce').text,
-            file: file.split('/').last,
-            type_bodacc: "BODACC-B",
-            annee_parution: Time.now.year
-          )
-        else
-          puts "radiation"
-          Radiation.create( \
-            nojo: annonce.search('nojo').text,
-            type_annonce: annonce.search('typeAnnonce').children,
-            numero_annonce: annonce.search('numeroAnnonce').text,
-            numero_departement: annonce.search('numeroDepartement').text,
-            tribunal: annonce.search('tribunal').text,
-            siren: annonce.search('numeroIdentificationRCS').text,
-            code_rcs: annonce.search('codeRCS').text,
-            nom_greffe_immat: annonce.search('nomGreffeImmat').text,
-            denomination: annonce.search('denomination').text,
-            sigle: annonce.search('sigle').text,
-            forme_juridique: annonce.search('formeJuridique').text,
-            type_voie: annonce.search('typeVoie').text,
-            numero_voie: annonce.search('numeroVoie').text,
-            nom_voie: annonce.search('nomVoie').text,
-            code_postal: annonce.search('codePostal').text,
-            ville: annonce.search('ville').text,
-            radiation_pm: annonce.search('radiationPM').text,
-            date_cessation_activite_pp: annonce.search('dateCessationActivitePP').text,
-            commentaire: annonce.search('commentaire').text,
-            nom_publication_ap: annonce.search('nomPublication').text,
-            numero_parution_ap: annonce.search('numeroPublication').text,
-            date_parution_ap: annonce.search('dateParution').text,
-            numero_annonce_ap: annonce.search('parutionAvisPrecedent/numeroAnnonce').text,
-            file: file.split('/').last,
-            type_bodacc: "BODACC-B",
-            annee_parution: Time.now.year
-          )
-        end
-        i = i + 1
-      end
-      system("rm "+file)
-      next if file == '.' or file == '..'
-      puts i.to_s + " new modifications"
-    end
-
-    # RCS-A (BODACC A)
     # i = 0
-    # Dir.glob('tmp/xml/RCS-A/*') do |file|
+    # Dir.glob('tmp/xml/RCS-B/*') do |file|
     #   xml = Nokogiri::XML(open(file))
     #   xml.xpath('//avis').each do |annonce|
-    #     if !annonce.search('categorieVente').blank?
-    #       immat = annonce.search('categorieVente').text
-    #       categorie = "Vente"
-    #     elsif !annonce.search('categorieCreation').blank?
-    #       immat = annonce.search('categorieCreation').text
-    #       categorie = "Creation"
-    #     else
-    #       immat = annonce.search('immatriculation').text
-    #       categorie = "Immatriculation"
-    #     end
-    #       Immatriculation.create( \
+    #     if !annonce.search('modificationsGenerales').blank?
+    #       Modification.create( \
     #         nojo: annonce.search('nojo').text,
     #         type_annonce: annonce.search('typeAnnonce').children,
     #         numero_annonce: annonce.search('numeroAnnonce').text,
     #         numero_departement: annonce.search('numeroDepartement').text,
     #         tribunal: annonce.search('tribunal').text,
-    #         siren: annonce.search('numeroIdentification').text,
+    #         siren: annonce.search('numeroIdentificationRCS').text,
     #         code_rcs: annonce.search('codeRCS').text,
     #         nom_greffe_immat: annonce.search('nomGreffeImmat').text,
     #         denomination: annonce.search('denomination').text,
-    #         administration: annonce.search('administration').text,
-    #         montant_capital: annonce.search('montantCapital').text,
-    #         devise: annonce.search('devise').text,
+    #         sigle: annonce.search('sigle').text,
+    #         forme_juridique: annonce.search('formeJuridique').text,
+    #         date_commencement_activite: annonce.search('dateCommencementActivite').text,
+    #         date_effet: annonce.search('dateEffet').text,
+    #         descriptif: annonce.search('descriptif').text,
+    #         denomination_pepm: annonce.search('modificationsGenerales/precedentExploitantPM/denomination').text,
+    #         siren_pepm: annonce.search('modificationsGenerales/precedentExploitantPM/numeroImmatriculation/numeroIdentification').text,
+    #         nature_pepp: annonce.search('modificationsGenerales/precedentExploitantPP/nature').text,
+    #         nom_pepp: annonce.search('modificationsGenerales/precedentExploitantPP/nom').text,
+    #         prenom_pepp: annonce.search('modificationsGenerales/precedentExploitantPP/prenom').text,
+    #         nom_usage_pepp: annonce.search('modificationsGenerales/precedentExploitantPP/nomUsage').text,
+    #         siren_pepp: annonce.search('modificationsGenerales/precedentExploitantPP/numeroImmatriculation/numeroIdentification').text,
+    #         nom_publication_ap: annonce.search('nomPublication').text,
+    #         numero_parution_ap: annonce.search('numeroPublication').text,
+    #         date_parution_ap: annonce.search('dateParution').text,
+    #         numero_annonce_ap: annonce.search('parutionAvisPrecedent/numeroAnnonce').text,
+    #         file: file.split('/').last,
+    #         type_bodacc: "BODACC-B",
+    #         annee_parution: file[23..26]
+    #       )
+    #     else
+    #       Radiation.create( \
+    #         nojo: annonce.search('nojo').text,
+    #         type_annonce: annonce.search('typeAnnonce').children,
+    #         numero_annonce: annonce.search('numeroAnnonce').text,
+    #         numero_departement: annonce.search('numeroDepartement').text,
+    #         tribunal: annonce.search('tribunal').text,
+    #         siren: annonce.search('numeroIdentificationRCS').text,
+    #         code_rcs: annonce.search('codeRCS').text,
+    #         nom_greffe_immat: annonce.search('nomGreffeImmat').text,
+    #         denomination: annonce.search('denomination').text,
+    #         sigle: annonce.search('sigle').text,
     #         forme_juridique: annonce.search('formeJuridique').text,
     #         type_voie: annonce.search('typeVoie').text,
     #         numero_voie: annonce.search('numeroVoie').text,
     #         nom_voie: annonce.search('nomVoie').text,
     #         code_postal: annonce.search('codePostal').text,
     #         ville: annonce.search('ville').text,
-    #         origine_fonds: annonce.search('origineFonds').text,
-    #         qualite_etablissement: annonce.search('qualiteEtablissement').text,
-    #         activite: annonce.search('activite').text,
-    #         date_commencement_activite: annonce.search('dateCommencementActivite').text,
-    #         date_immatriculation: annonce.search('dateImmatriculation').text,
-    #         descriptif: annonce.search('descriptif').text,
-    #         date_effet: annonce.search('dateEffet').text,
-    #         journal: annonce.search('journal').text,
-    #         opposition: annonce.search('opposition').text,
-    #         declaration_creance: annonce.search('declarationCreance').text,
-    #         categorie: categorie,
-    #         immatriculation: immat,
+    #         radiation_pm: annonce.search('radiationPM').text,
+    #         date_cessation_activite_pp: annonce.search('dateCessationActivitePP').text,
+    #         commentaire: annonce.search('commentaire').text,
     #         nom_publication_ap: annonce.search('nomPublication').text,
     #         numero_parution_ap: annonce.search('numeroPublication').text,
     #         date_parution_ap: annonce.search('dateParution').text,
     #         numero_annonce_ap: annonce.search('parutionAvisPrecedent/numeroAnnonce').text,
     #         file: file.split('/').last,
-    #         type_bodacc: "BODACC-A",
-    #         annee_parution: Time.now.year
+    #         type_bodacc: "BODACC-B",
+    #         annee_parution: file[23..26]
     #       )
-    #       i = i + 1
+    #     end
+    #     i = i + 1
     #   end
-    #   system("rm " +file)
+    #   system("rm "+file)
     #   next if file == '.' or file == '..'
-    #   puts i.to_s + " new immatriculations"
+    #   puts i.to_s + " new RCS-B"
     # end
+    # system('rm tmp/xml/RCS-B/*.taz*')
+
+    # RCS-A (BODACC A)
+    i = 0
+    Dir.glob('tmp/xml/RCS-A/*') do |file|
+      xml = Nokogiri::XML(open(file))
+      xml.xpath('//avis').each do |annonce|
+        if !annonce.search('categorieVente').blank?
+          immat = annonce.search('categorieVente').text
+          categorie = "Vente"
+        elsif !annonce.search('categorieCreation').blank?
+          immat = annonce.search('categorieCreation').text
+          categorie = "Creation"
+        else
+          immat = annonce.search('immatriculation').text
+          categorie = "Immatriculation"
+        end
+          Immatriculation.create( \
+            nojo: annonce.search('nojo').text,
+            type_annonce: annonce.search('typeAnnonce').children,
+            numero_annonce: annonce.search('numeroAnnonce').text,
+            numero_departement: annonce.search('numeroDepartement').text,
+            tribunal: annonce.search('tribunal').text,
+            siren: annonce.search('numeroIdentification').text,
+            code_rcs: annonce.search('codeRCS').text,
+            nom_greffe_immat: annonce.search('nomGreffeImmat').text,
+            denomination: annonce.search('denomination').text,
+            administration: annonce.search('administration').text,
+            montant_capital: annonce.search('montantCapital').text,
+            devise: annonce.search('devise').text,
+            forme_juridique: annonce.search('formeJuridique').text,
+            type_voie: annonce.search('typeVoie').text,
+            numero_voie: annonce.search('numeroVoie').text,
+            nom_voie: annonce.search('nomVoie').text,
+            code_postal: annonce.search('codePostal').text,
+            ville: annonce.search('ville').text,
+            origine_fonds: annonce.search('origineFonds').text,
+            qualite_etablissement: annonce.search('qualiteEtablissement').text,
+            activite: annonce.search('activite').text,
+            date_commencement_activite: annonce.search('dateCommencementActivite').text,
+            date_immatriculation: annonce.search('dateImmatriculation').text,
+            descriptif: annonce.search('descriptif').text,
+            date_effet: annonce.search('dateEffet').text,
+            journal: annonce.search('journal').text,
+            opposition: annonce.search('opposition').text,
+            declaration_creance: annonce.search('declarationCreance').text,
+            categorie: categorie,
+            immatriculation: immat,
+            nom_publication_ap: annonce.search('nomPublication').text,
+            numero_parution_ap: annonce.search('numeroPublication').text,
+            date_parution_ap: annonce.search('dateParution').text,
+            numero_annonce_ap: annonce.search('parutionAvisPrecedent/numeroAnnonce').text,
+            file: file.split('/').last,
+            type_bodacc: "BODACC-A",
+            annee_parution: file[23..26]
+          )
+          i = i + 1
+      end
+      system("rm " +file)
+      next if file == '.' or file == '..'
+      puts i.to_s + " new immatriculations"
+    end
 
     puts "Boaper did his job !".green
     puts "Bye !"

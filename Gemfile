@@ -32,7 +32,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'mechanize'
 gem 'colorize'
-gem 'firmapi'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
