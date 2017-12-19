@@ -28,6 +28,8 @@ Scraper route => GET '/scraper'
 
 Boaper use the Nokogiri [gem](https://github.com/sparklemotion/nokogiri) and Mechanize [gem](https://github.com/sparklemotion/nokogiri) in order to scrap and download every files. After having decompressed them, they are registered in a postgresql database.
 
+If you use this scraper for the first time, inserting 2008-2016 announcements might take a looooooong time. There is more than 20 millions announcements to insert so...
+
 That's it !
 
 ## Built With
