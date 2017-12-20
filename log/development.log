@@ -1,0 +1,62 @@
+  
+ActiveRecord::StatementInvalid (PG::UnableToSend: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+: BEGIN):
+  
+app/controllers/scraper_controller.rb:115:in `block (2 levels) in insert_bilan'
+app/controllers/scraper_controller.rb:114:in `block in insert_bilan'
+app/controllers/scraper_controller.rb:110:in `glob'
+app/controllers/scraper_controller.rb:110:in `insert_bilan'
+app/controllers/scraper_controller.rb:101:in `insert_all'
+app/controllers/scraper_controller.rb:86:in `block in index'
+app/controllers/scraper_controller.rb:67:in `index'
+  
+ActiveRecord::StatementInvalid (PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+: BEGIN):
+  
+app/controllers/scraper_controller.rb:115:in `block (2 levels) in insert_bilan'
+app/controllers/scraper_controller.rb:114:in `block in insert_bilan'
+app/controllers/scraper_controller.rb:110:in `glob'
+app/controllers/scraper_controller.rb:110:in `insert_bilan'
+app/controllers/scraper_controller.rb:101:in `insert_all'
+app/controllers/scraper_controller.rb:53:in `block in index'
+app/controllers/scraper_controller.rb:23:in `index'
+  
+TypeError (String can't be coerced into Fixnum):
+  
+app/controllers/scraper_controller.rb:147:in `+'
+app/controllers/scraper_controller.rb:147:in `block in insert_bilan'
+app/controllers/scraper_controller.rb:111:in `glob'
+app/controllers/scraper_controller.rb:111:in `insert_bilan'
+app/controllers/scraper_controller.rb:103:in `insert_all'
+app/controllers/scraper_controller.rb:88:in `block in index'
+app/controllers/scraper_controller.rb:69:in `index'
+  
+ActiveRecord::StatementInvalid (PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+: BEGIN):
+  
+app/controllers/scraper_controller.rb:116:in `block (2 levels) in insert_bilan'
+app/controllers/scraper_controller.rb:115:in `block in insert_bilan'
+app/controllers/scraper_controller.rb:111:in `glob'
+app/controllers/scraper_controller.rb:111:in `insert_bilan'
+app/controllers/scraper_controller.rb:103:in `insert_all'
+app/controllers/scraper_controller.rb:88:in `block in index'
+app/controllers/scraper_controller.rb:69:in `index'
+  
+ActiveRecord::StatementInvalid (PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+: BEGIN):
+  
+app/controllers/scraper_controller.rb:117:in `block (2 levels) in insert_bilan'
+app/controllers/scraper_controller.rb:116:in `block in insert_bilan'
+app/controllers/scraper_controller.rb:112:in `glob'
+app/controllers/scraper_controller.rb:112:in `insert_bilan'
+app/controllers/scraper_controller.rb:103:in `insert_all'
+app/controllers/scraper_controller.rb:88:in `block in index'
+app/controllers/scraper_controller.rb:69:in `index'

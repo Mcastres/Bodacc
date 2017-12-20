@@ -13,7 +13,7 @@ class ScraperController < ApplicationController
 
     # If we don't already have the past years Bodacc anouncements we download all of them
     if Bilan.count == 0
-      
+
       # Let's scrap this page with Nokogiri and Mechanize
       page = Nokogiri::HTML(open(url_archives)) # For Scrap
 
@@ -23,6 +23,9 @@ class ScraperController < ApplicationController
       page.search('//tr').each do |line|
         next if line.search('td/text()')[4].to_s.blank?
         file = line.search('td > a/text()').to_s.strip
+
+        # If you want to insert a special year, (ex: only 2015)
+        # next if !file.inslude? "2015"
 
         # Init path for archives
         path = "tmp/archives/"
@@ -48,7 +51,7 @@ class ScraperController < ApplicationController
 
         # Files are now in xml format, ready to be send in database
         # Insert announcements in database. All in private functions down here
-        puts "Inserting in databse...".light_blue
+        puts "Inserting in database...".light_blue
         insert_all
 
         break
@@ -81,7 +84,7 @@ class ScraperController < ApplicationController
 
         # Files are now in xml format, ready to be send in database
         # Insert announcements in database. All in private functions down here
-        puts "Inserting in databse...".light_blue
+        puts "Inserting in database...".light_blue
         insert_all
       end
     end
@@ -143,6 +146,8 @@ class ScraperController < ApplicationController
         i = i + 1
       end
       system("rm "+file)
+      puts i.to_s + " announcements added from "+ file.split('/').last
+      i = 0
       next if file == '.' or file == '..'
     end
   end
@@ -189,6 +194,8 @@ class ScraperController < ApplicationController
         i = i + 1
       end
       system("rm "+file)
+      puts i.to_s + " announcements added from "+ file.split('/').last
+      i = 0
       next if file == '.' or file == '..'
     end
   end
@@ -253,6 +260,8 @@ class ScraperController < ApplicationController
           i = i + 1
       end
       system("rm " +file)
+      puts i.to_s + " announcements added from "+ file.split('/').last
+      i = 0
       next if file == '.' or file == '..'
     end
   end
@@ -329,6 +338,8 @@ class ScraperController < ApplicationController
         i = i + 1
       end
       system("rm "+file)
+      puts i.to_s + " announcements added from "+ file.split('/').last
+      i = 0
       next if file == '.' or file == '..'
     end
   end
