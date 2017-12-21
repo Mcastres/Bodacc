@@ -24,8 +24,8 @@ class ScraperController < ApplicationController
         next if line.search('td/text()')[4].to_s.blank?
         file = line.search('td > a/text()').to_s.strip
 
-        # If you want to insert a special year, (ex: only 2015)
-        # next if !file.inslude? "2015"
+        # If you only want to insert a special year (ex: only 2015)
+        # next if !file.include? "2015"
 
         # Init path for archives
         path = "tmp/archives/"
@@ -36,13 +36,13 @@ class ScraperController < ApplicationController
         agent.get(url_archives + file).save(path + file)
 
         # Untar the big folder containing compressed files (ex: BODACC_2008.tar)
-        puts "Decompressing entire folder of " + file.gsub(/[^0-9]/, '') + "year"
-        system('tar -xvf '+path + file+ ' -C '+path+'')
+        puts "Decompressing entire folder of " + file.gsub(/[^0-9]/, '') + " year"
+        system('tar -xf '+path + file+ ' -C '+path+'')
 
         # Untar every files and move them in their correct folder (ex: RCS-A_BXA20080144.taz)
         Dir.glob('tmp/archives/**/**/*.taz*') do |file|
-          if file.include? "_"
-            system('tar -xvf '+file+' -C '+get_path_archives(file)+'')
+          if file.split('/').last.include? "_"
+            system('tar -xf '+file+' -C '+get_path_archives(file)+'')
           end
         end
 
@@ -53,8 +53,6 @@ class ScraperController < ApplicationController
         # Insert announcements in database. All in private functions down here
         puts "Inserting in database...".light_blue
         insert_all
-
-        break
       end
     end
 
@@ -79,8 +77,8 @@ class ScraperController < ApplicationController
         agent.pluggable_parser.default = Mechanize::Download
         agent.get(url + file).save(path)
 
-        #Untar every files and remove all .taz file
-        system('tar -xvf '+path+ ' -C '+path.gsub(file, "")+ '; rm '+path)
+        # Untar every files and remove all .taz file
+        system('tar -xf '+path+ ' -C '+path.gsub(file, "")+ '; rm '+path)
 
         # Files are now in xml format, ready to be send in database
         # Insert announcements in database. All in private functions down here

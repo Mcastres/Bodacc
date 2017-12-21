@@ -60,3 +60,116 @@ app/controllers/scraper_controller.rb:112:in `insert_bilan'
 app/controllers/scraper_controller.rb:103:in `insert_all'
 app/controllers/scraper_controller.rb:88:in `block in index'
 app/controllers/scraper_controller.rb:69:in `index'
+  
+ActiveRecord::StatementInvalid (PG::UnableToSend: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+: SELECT  "bilans".* FROM "bilans" ORDER BY annee_parution DESC LIMIT $1):
+  
+app/controllers/scraper_controller.rb:78:in `block in index'
+app/controllers/scraper_controller.rb:69:in `index'
+  
+NoMethodError (undefined method `annee_parution' for nil:NilClass):
+  
+app/controllers/scraper_controller.rb:78:in `block in index'
+app/controllers/scraper_controller.rb:69:in `index'
+  
+TypeError (no implicit conversion of nil into String):
+  
+app/controllers/scraper_controller.rb:45:in `+'
+app/controllers/scraper_controller.rb:45:in `block (2 levels) in index'
+app/controllers/scraper_controller.rb:43:in `glob'
+app/controllers/scraper_controller.rb:43:in `block in index'
+app/controllers/scraper_controller.rb:23:in `index'
+  
+TypeError (no implicit conversion of nil into String):
+  
+app/controllers/scraper_controller.rb:45:in `+'
+app/controllers/scraper_controller.rb:45:in `block (2 levels) in index'
+app/controllers/scraper_controller.rb:43:in `glob'
+app/controllers/scraper_controller.rb:43:in `block in index'
+app/controllers/scraper_controller.rb:23:in `index'
+  
+NoMethodError (undefined method `inslude?' for "BODACC_2008.tar":String
+Did you mean?  include?):
+  
+app/controllers/scraper_controller.rb:28:in `block in index'
+app/controllers/scraper_controller.rb:23:in `index'
+  
+TypeError (no implicit conversion of nil into String):
+  
+app/controllers/scraper_controller.rb:45:in `+'
+app/controllers/scraper_controller.rb:45:in `block (2 levels) in index'
+app/controllers/scraper_controller.rb:43:in `glob'
+app/controllers/scraper_controller.rb:43:in `block in index'
+app/controllers/scraper_controller.rb:23:in `index'
+  
+TypeError (no implicit conversion of nil into String):
+  
+app/controllers/scraper_controller.rb:46:in `+'
+app/controllers/scraper_controller.rb:46:in `block (2 levels) in index'
+app/controllers/scraper_controller.rb:43:in `glob'
+app/controllers/scraper_controller.rb:43:in `block in index'
+app/controllers/scraper_controller.rb:23:in `index'
+  
+TypeError (no implicit conversion of nil into String):
+  
+app/controllers/scraper_controller.rb:46:in `+'
+app/controllers/scraper_controller.rb:46:in `block in index'
+app/controllers/scraper_controller.rb:43:in `glob'
+app/controllers/scraper_controller.rb:43:in `index'
+  
+NoMethodError (undefined method `annee_parution' for nil:NilClass):
+  
+app/controllers/scraper_controller.rb:77:in `block in index'
+app/controllers/scraper_controller.rb:68:in `index'
+  
+NoMethodError (undefined method `annee_parution' for nil:NilClass):
+  
+app/controllers/scraper_controller.rb:77:in `block in index'
+app/controllers/scraper_controller.rb:68:in `index'
+  
+NoMethodError (undefined method `annee_parution' for nil:NilClass):
+  
+app/controllers/scraper_controller.rb:77:in `block in index'
+app/controllers/scraper_controller.rb:68:in `index'
+  
+NoMethodError (undefined method `annee_parution' for nil:NilClass):
+  
+app/controllers/scraper_controller.rb:77:in `block in index'
+app/controllers/scraper_controller.rb:68:in `index'
+  
+NoMethodError (undefined method `annee_parution' for nil:NilClass):
+  
+app/controllers/scraper_controller.rb:77:in `block in index'
+app/controllers/scraper_controller.rb:68:in `index'
+  
+NoMethodError (undefined method `annee_parution' for nil:NilClass):
+  
+app/controllers/scraper_controller.rb:77:in `block in index'
+app/controllers/scraper_controller.rb:68:in `index'
+  
+NoMethodError (undefined method `annee_parution' for nil:NilClass):
+  
+app/controllers/scraper_controller.rb:77:in `block in index'
+app/controllers/scraper_controller.rb:68:in `index'
+  
+NoMethodError (undefined method `annee_parution' for nil:NilClass):
+  
+app/controllers/scraper_controller.rb:77:in `block in index'
+app/controllers/scraper_controller.rb:68:in `index'
+  
+NoMethodError (undefined method `annee_parution' for nil:NilClass):
+  
+app/controllers/scraper_controller.rb:77:in `block in index'
+app/controllers/scraper_controller.rb:68:in `index'
+  
+NoMethodError (undefined method `annee_parution' for nil:NilClass):
+  
+app/controllers/scraper_controller.rb:77:in `block in index'
+app/controllers/scraper_controller.rb:68:in `index'
+  
+NoMethodError (undefined method `annee_parution' for nil:NilClass):
+  
+app/controllers/scraper_controller.rb:77:in `block in index'
+app/controllers/scraper_controller.rb:68:in `index'
