@@ -1,2 +1,0 @@
-class Radiation < ApplicationRecord
-end
