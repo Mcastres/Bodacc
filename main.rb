@@ -4,7 +4,7 @@ require 'date'
 require 'mechanize'
 require 'net/http'
 require 'open-uri'
-require 'pg' # or 'mysql2' or 'sqlite3'
+require 'pg'
 
 # Require models
 require_relative 'models/bilan'
@@ -21,13 +21,14 @@ require_relative 'modules/radiation'
 require_relative 'modules/immatriculation'
 require_relative 'modules/scraper'
 
-# Establishing connection
-ActiveRecord::Base.establish_connection(
-  adapter:  'postgresql', # or 'mysql2' or 'sqlite3'
-  database: 'bodacc',
-  username: '',
-  password: '',
-  host:     'localhost',
-)
+# Require services
+require_relative 'services/downloader'
+require_relative 'services/archives'
+require_relative 'services/actual'
 
-Scrapper::ScraperAction.execute
+# Establishing connection
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
+ActiveRecord::Base.logger = Logger.new(STDOUT)
+
+# Execute the scraper
+Scraper.execute

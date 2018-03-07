@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
-
 # Print colored message on console
 gem 'colorize'
 
@@ -19,6 +17,9 @@ gem 'rubocop'
 
 # Ruby ORM
 gem 'activerecord'
+
+# Transform url into connection for AR
+gem 'activerecord_url_connections'
 
 # Terminal library
 gem 'fileutils'

@@ -1,2 +1,31 @@
 class Pcl < ActiveRecord::Base
+  # nojo:
+  # type_annonce:
+  # numero_annonce:
+  # numero_departement:
+  # tribunal:
+  # identifiant_client:
+  # siren:
+  # code_rcs:
+  # nom_greffe_immat:
+  # denomination:
+  # sigle:
+  # forme_juridique:
+  # numero_voie:
+  # type_voie:
+  # nom_voie:
+  # compl_geographique:
+  # code_postal:
+  # ville:
+  # famille:
+  # nature:
+  # date_jugement:
+  # compl_jugement:
+  # nom_publication_ap:
+  # numero_parution_ap:
+  # date_parution_ap:
+  # numero_annonce_ap:
+  # file:
+  # type_bodacc:
+  # annee_parution:
 end
