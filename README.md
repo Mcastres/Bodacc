@@ -20,7 +20,7 @@ $ bundle install
 
 ### Intalling database
 
-The repository include a dump of the empty database called "database_dump". Create your database with it by running the following command:
+The repository include a dump of the empty database called "structure.sql". Create your database with it by running the following command:
 
 ```sh
 $ pg_dump bodacc < structure.sql
